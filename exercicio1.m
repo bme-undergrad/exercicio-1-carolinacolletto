@@ -7,21 +7,23 @@ imax = 20;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 
-x = zeros(imax,1);    %% vetor para as aproximações
-x(1) = x0;            %% chute inicial
-erro = zeros(imax,1); %% vetor para erros
+x = zeros(imax,1);
+x(1) = x0;
+erro = zeros(length(x),1);
 
-for ii = 1:imax-1
+for ii = 1:length(x)-1
+  x(ii+1) = x(ii) - func(x(ii)) / fp(x(ii));
+  
   if ii ~= 1
-    erro(ii) = abs((x(ii)-x(ii-1))/x(ii)) * 100;  %% erro relativo em %
-    if erro(ii) < es
+    erro(ii) = abs((x(ii+1) - x(ii)) / x(ii+1));
+    if erro(ii) < es/100   
       break
     endif
   endif
-  x(ii+1) = x(ii) - f(x(ii))/fp(x(ii));   %% Newton-Raphson
 endfor
 
-t = x(ii);   %% última aproximação
+t = x(ii+1);
 
 endfunction
+
 
