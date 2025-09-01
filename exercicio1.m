@@ -1,29 +1,25 @@
 function t = exercicio1(func,x0)
 
 % nao alterar: inicio
-es = 1;
+es = 0.01;
 imax = 20;
 % nao alterar: fim
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%
+t = zeros(imax,1);
+t(1)=x0;
 
-x = zeros(imax,1);
-x(1) = x0;
-erro = zeros(length(x),1);
-
-for ii = 1:length(x)-1
-  x(ii+1) = x(ii) - func(x(ii)) / fp(x(ii));
-  
-  if ii ~= 1
-    erro(ii) = abs((x(ii+1) - x(ii)) / x(ii+1));
-    if erro(ii) < es/100   
+for x =1:length(t)-1
+  if x ~=1
+    erro(x)=abs((t(x)-t(x-1))/t(x))
+    if erro(x)<es
       break
     endif
   endif
-endfor
-
-t = x(ii+1);
-
+ t(x+1) = t(j) - (func(t(x))/func_d(t(x)));
+  endfor
+  t=t(x)
+  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 endfunction
 
 
