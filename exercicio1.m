@@ -1,25 +1,31 @@
 function t = exercicio1(func,x0)
 
 % nao alterar: inicio
-es = 0.01;
+es = 1;
 imax = 20;
 % nao alterar: fim
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-t = zeros(imax,1);
-t(1)=x0;
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
-for x =1:length(t)-1
-  if x ~=1
-    erro(x)=abs((t(x)-t(x-1))/t(x))
-    if erro(x)<es
-      break
+  t_raizes = zeros(imax,1);
+  t_raizes(1) = x0;
+
+  for ii = 1:length(t_raizes)-1
+    if ii ~= 1
+      erro(ii) = abs((t_raizes(ii) - t_raizes(ii-1))/t_raizes(ii))
+      if erro(ii) < es
+        break
+      endif
     endif
-  endif
- t(x+1) = t(j) - (func(t(x))/func_d(t(x)));
+
+    t_raizes(ii+1) = t_raizes(ii) - func(t_raizes(ii))/func_d(t_raizes(ii));
+  
   endfor
-  t=t(x)
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+  t = t_raizes(ii);
+
+  %%%%%%%%%%%%%%%%%%%%%%%%%%
+
 endfunction
 
 
