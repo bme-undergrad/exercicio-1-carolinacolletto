@@ -1,11 +1,11 @@
-function t = exercicio1(func,x0)
+function t = exercicio01(func, func_d, x0)
 
-% nao alterar: inicio
-es = 1;
-imax = 20;
-% nao alterar: fim
+  % nao alterar: inicio
+  es = 1;
+  imax = 20;
+  % nao alterar: fim
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
+  %%%%%%%%%%%%%%%%%%%%%%%%%%
 
   t_raizes = zeros(imax,1);
   t_raizes(1) = x0;
@@ -27,5 +27,3 @@ imax = 20;
   %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 endfunction
-
-
